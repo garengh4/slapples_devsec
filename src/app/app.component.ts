@@ -1,10 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from './_services/token-storage.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'slapples_devsec';
+export class AppComponent implements OnInit {
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
+  private roles: string[]
+
+  constructor(private tokenStorage: TokenStorageService) {}
+
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorage.getToken();
+ 
+    if (this.isLoggedIn) {
+      const user = this.tokenStorage.getUser();
+      this.roles = user.roles;
+ 
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+ 
+      this.username = user.displayName;
+    }
+  }
+ 
+  logout(): void {
+    this.tokenStorage.logout();
+    window.location.reload();
+  }
+
 }

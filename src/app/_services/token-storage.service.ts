@@ -18,7 +18,19 @@ export class TokenStorageService {
     return JSON.parse(sessionStorage.getItem(USER_KEY))
   }
 
-  logout() {
+  public saveToken(token: string): void {
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
+  }
+
+  public logout() {
     window.sessionStorage.clear();
   }
+
+  public saveUser(user): void {
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+
 }
