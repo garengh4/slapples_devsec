@@ -1,0 +1,46 @@
+<p>register works!</p>
+
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form *ngIf="!isSuccessful" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Display name" name="displayName" [(ngModel)]="form.displayName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" name="email" [(ngModel)]="form.email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" name="password" [(ngModel)]="form.password">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Confirm password" name="matchingPassword" [(ngModel)]="form.matchingPassword">
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block">Register</button>
+    </form>
+
+  </mat-card>
+
+</div>
