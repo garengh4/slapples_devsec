@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppConstants } from '../common/app.constants';
+import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 
@@ -11,14 +13,16 @@ import { UserService } from '../_services/user.service';
 export class LoginComponent implements OnInit {
   form: any = {}
   isLoggedIn = false;
-  isLoginFailed = false; // why?
+  isLoginFailed = false;
   currentUser: any;
   errorMessage = '';
-
+  linkedinURL = AppConstants.LINKEDIN_AUTH_URL;
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private tokenStorageService: TokenStorageService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -51,7 +55,23 @@ export class LoginComponent implements OnInit {
     this.isLoginFailed = false;
     this.isLoggedIn = true;
     this.currentUser = this.tokenStorageService.getUser();
-    window.location.reload();
-  }
+      window.location.reload();
+    }
 
+  onSubmit(): void {
+    this.authService.login(this.form).subscribe(
+      data => {
+        console.log(data)
+        this.tokenStorageService.saveToken(data.accessToken);
+        this.login(data.user)
+        console.log(this.currentUser)
+
+      },
+      err => {
+        this.errorMessage = err.error.errorMessage;
+        this.isLoginFailed = true;
+        console.log(this.currentUser)
+      }
+    )
+  }
 }

@@ -14,8 +14,8 @@ export class TokenStorageService {
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
-  public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY))
+  public getUser(): any {
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 
   public saveToken(token: string): void {
