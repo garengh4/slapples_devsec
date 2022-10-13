@@ -7,7 +7,7 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent  {
-  form:any = {};
+  form:any = {"using2FA": false};
   isSuccessful = false;
   isSignupFailed = false;
   errorMessage = "";

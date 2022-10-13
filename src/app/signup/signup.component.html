@@ -26,21 +26,11 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Confirm password" name="matchingPassword" [(ngModel)]="form.matchingPassword">
         </mat-form-field>
-
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Select an option</mat-label>
-          <mat-select [(value)]="selected">
-            <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
-          </mat-select>
-        </mat-form-field> -->
         
       </mat-card-content>
       <button mat-stroked-button color="accent" class="btn-block">Register</button>
     </form>
-
+    <div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
   </mat-card>
 
 </div>
