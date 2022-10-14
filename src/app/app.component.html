@@ -12,6 +12,12 @@
             </a>
           </li>
 
+          <!-- <li *ngIf="showAdminBoard">
+            <a routerLink="/admin">Admin Board</a>
+          </li> -->
+
+          <li class="nav-item" *ngIf="showAdminBoard"><a href="/admin" class="nav-link" routerLink="admin">Admin Board</a></li>
+
           <li>
             <a routerLink="/login">
               <mat-icon class="icon">input</mat-icon><span>Login</span>
