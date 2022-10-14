@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div class="main-div">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div class="example-header-image"></div>
+      <mat-card-title>Your profile information</mat-card-title>
+      <mat-card-subtitle>Edit your data</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        <strong>Email: </strong>{{ currentUser.email}} <br>
+        <strong>Roles: </strong>{{ currentUser.roles}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
