@@ -13,6 +13,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpClientModule } from "@angular/common/http";
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const sharedModules: any[] = [
   FormsModule,
@@ -29,7 +30,9 @@ const sharedModules: any[] = [
   MatCardModule, 
   MatFormFieldModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatGridListModule
+  
 ]
 
 @NgModule({
