@@ -2,7 +2,7 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <div>
-        <a routerLink="/">Material Blog</a>
+        <a routerLink="home">Material Blog</a>
       </div>
       <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="20px" class="navigation-items">
@@ -12,30 +12,28 @@
             </a>
           </li>
 
-          <!-- <li *ngIf="showAdminBoard">
-            <a routerLink="/admin">Admin Board</a>
-          </li> -->
+          <li class="nav-item" *ngIf="showAdminBoard">
+            <a href="/admin" class="nav-link" routerLink="admin">Dashboard</a>
+          </li>
 
-          <li class="nav-item" *ngIf="showAdminBoard"><a href="/admin" class="nav-link" routerLink="admin">Admin Board</a></li>
-
-          <li>
+          <li *ngIf="!isLoggedIn">
             <a routerLink="/login">
-              <mat-icon class="icon">input</mat-icon><span>Login</span>
+              <mat-icon class="icon">input</mat-icon><span>LogIn</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="!isLoggedIn">
             <a routerLink="/signup">
               <mat-icon class="icon">dashboard</mat-icon><span>Sign up</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="isLoggedIn">
             <a (click)="logout()">
               <mat-icon class="icon">input</mat-icon><span>LogOut</span>
             </a>
           </li>
           <li>
             <a routerLink="/profile" *ngIf="isLoggedIn">
-              <span > {{ username }}</span>
+              <span>Hello {{ username }}</span>
             </a>
           </li>
         </ul>
